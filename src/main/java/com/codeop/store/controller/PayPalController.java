@@ -16,6 +16,7 @@ import com.codeop.store.repository.UserRepository;
 import com.codeop.store.service.PayPalService;
 import jakarta.validation.Valid;
 import java.util.Map;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/payments/paypal")
+@ConditionalOnBean(PayPalService.class)
 public class PayPalController {
 
     private final PayPalService payPalService;
