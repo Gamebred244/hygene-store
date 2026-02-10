@@ -26,9 +26,12 @@ public class DataSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        if (productRepository.count() > 0) {
+            return;
+        }
+
         cartRepository.deleteAll();
         orderRepository.deleteAll();
-        productRepository.deleteAll();
 
         List<Product> products = List.of(
                 build("Signal Dentifrice Blancheur 100 ml",
